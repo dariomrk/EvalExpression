@@ -6,7 +6,7 @@ namespace Unit
 {
     public class LexerTests
     {
-        readonly ILexer _lexer = new Lexer.Lexer();
+        private readonly ILexer _lexer = new Lexer.Lexer();
 
         [Fact]
         public void Simple()
