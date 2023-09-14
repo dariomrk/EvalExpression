@@ -10,7 +10,6 @@ namespace Lexer.Extensions
         {
             TokenType.Number => RegexFunctions.MatchNumberAtStart(),
             TokenType.Operator => RegexFunctions.MatchOperatorAtStart(),
-            TokenType.Parenthesis => RegexFunctions.MatchParenthesisAtStart(),
             _ => throw new ArgumentException($"Cannot provide a {nameof(Regex)} for {nameof(TokenType)}.{type}."),
         };
     }

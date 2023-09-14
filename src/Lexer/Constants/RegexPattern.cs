@@ -4,8 +4,7 @@
     {
         internal const string AtStart = "^";
         internal const string Number = @"[0-9]+(\.[0-9]+)?";
-        internal const string Operator = "[-+*/^]";
-        internal const string Parenthesis = "[()]";
+        internal const string Operator = "[-+*/^()]";
         internal const string Whitespace = @"\s+";
     }
 }

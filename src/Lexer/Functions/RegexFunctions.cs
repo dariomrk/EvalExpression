@@ -11,9 +11,6 @@ namespace Lexer.Functions
         [GeneratedRegex(RegexPattern.AtStart + RegexPattern.Operator)]
         internal static partial Regex MatchOperatorAtStart();
 
-        [GeneratedRegex(RegexPattern.AtStart + RegexPattern.Parenthesis)]
-        internal static partial Regex MatchParenthesisAtStart();
-
         [GeneratedRegex(RegexPattern.Whitespace)]
         internal static partial Regex MatchWhiteSpace();
 

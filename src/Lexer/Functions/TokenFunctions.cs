@@ -32,7 +32,6 @@ namespace Lexer.Functions
             {
                 TokenType.Number,
                 TokenType.Operator,
-                TokenType.Parenthesis
             };
 
             foreach (var tokenType in tokensToCheck)

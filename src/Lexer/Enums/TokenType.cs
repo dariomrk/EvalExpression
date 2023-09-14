@@ -6,6 +6,5 @@
         EndOfFile,
         Number,
         Operator,
-        Parenthesis,
     }
 }
