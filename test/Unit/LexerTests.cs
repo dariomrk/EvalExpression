@@ -70,11 +70,11 @@ namespace Unit
         {
             IEnumerable<Token> expected = new List<Token>
             {
-                new Token(TokenType.Parenthesis, "("),
+                new Token(TokenType.Operator, "("),
                 new Token(TokenType.Number, "3"),
                 new Token(TokenType.Operator, "+"),
                 new Token(TokenType.Number, "4"),
-                new Token(TokenType.Parenthesis, ")"),
+                new Token(TokenType.Operator, ")"),
                 new Token(TokenType.Operator, "*"),
                 new Token(TokenType.Number, "1"),
                 new Token(TokenType.EndOfFile),
@@ -92,15 +92,15 @@ namespace Unit
             {
                 new Token(TokenType.Number, "1"),
                 new Token(TokenType.Operator, "+"),
-                new Token(TokenType.Parenthesis, "("),
-                new Token(TokenType.Parenthesis, "("),
+                new Token(TokenType.Operator, "("),
+                new Token(TokenType.Operator, "("),
                 new Token(TokenType.Number, "3"),
                 new Token(TokenType.Operator, "+"),
                 new Token(TokenType.Number, "4"),
-                new Token(TokenType.Parenthesis, ")"),
+                new Token(TokenType.Operator, ")"),
                 new Token(TokenType.Operator, "*"),
                 new Token(TokenType.Number, "1"),
-                new Token(TokenType.Parenthesis, ")"),
+                new Token(TokenType.Operator, ")"),
                 new Token(TokenType.EndOfFile),
             };
 
