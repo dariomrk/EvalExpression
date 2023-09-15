@@ -8,7 +8,7 @@ namespace Lexer
     {
         public static IEnumerable<Token> Tokenize(string expression)
         {
-            int position = 0;
+            var position = 0;
 
             while (position <= expression.Length)
             {

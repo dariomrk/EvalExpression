@@ -17,14 +17,14 @@ namespace Lexer.Types
             $"{{ Lexeme = {Lexeme ?? "NULL"}, TokenType = {Type} }}";
 
         public static Token EndOfFileToken =>
-            new Token
+            new()
             {
                 Lexeme = null,
                 Type = TokenType.EndOfFile
             };
 
         public static Token Unknown =>
-            new Token
+            new()
             {
                 Lexeme = null,
                 Type = TokenType.Unknown
