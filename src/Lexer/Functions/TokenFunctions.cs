@@ -28,13 +28,20 @@ namespace Lexer.Functions
             if (expression.Length is 0)
                 return Token.EndOfFileToken;
 
-            var tokensToCheck = new List<TokenType>
+            var tokensToMatch = new List<TokenType>
             {
+                TokenType.Whitespace,
                 TokenType.Number,
-                TokenType.Operator,
+                TokenType.Plus,
+                TokenType.Hyphen,
+                TokenType.Asterisk,
+                TokenType.Slash,
+                TokenType.Caret,
+                TokenType.OpenParenthesis,
+                TokenType.CloseParenthesis,
             };
 
-            foreach (var tokenType in tokensToCheck)
+            foreach (var tokenType in tokensToMatch)
             {
                 if (TryMatchNextToken(expression, tokenType, out var output))
                     return output!.Value;

@@ -8,8 +8,15 @@ namespace Lexer.Extensions
     {
         internal static Regex GetRegex(this TokenType type) => type switch
         {
+            TokenType.Whitespace => RegexFunctions.MatchWhitespaceAtStart(),
             TokenType.Number => RegexFunctions.MatchNumberAtStart(),
-            TokenType.Operator => RegexFunctions.MatchOperatorAtStart(),
+            TokenType.Plus => RegexFunctions.MatchPlusAtStart(),
+            TokenType.Hyphen => RegexFunctions.MatchHyphenAtStart(),
+            TokenType.Asterisk => RegexFunctions.MatchAsteriskAtStart(),
+            TokenType.Slash => RegexFunctions.MatchSlashAtStart(),
+            TokenType.Caret => RegexFunctions.MatchCaretAtStart(),
+            TokenType.OpenParenthesis => RegexFunctions.MatchOpenParenthesisAtStart(),
+            TokenType.CloseParenthesis => RegexFunctions.MatchCloseParenthesisAtStart(),
             _ => throw new ArgumentException($"Cannot provide a {nameof(Regex)} for {nameof(TokenType)}.{type}."),
         };
     }

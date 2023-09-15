@@ -4,7 +4,14 @@
     {
         Unknown,
         EndOfFile,
+        Whitespace,
         Number,
-        Operator,
+        Plus,
+        Hyphen,
+        Asterisk,
+        Slash,
+        Caret,
+        OpenParenthesis,
+        CloseParenthesis,
     }
 }

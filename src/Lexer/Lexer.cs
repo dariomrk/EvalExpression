@@ -6,10 +6,9 @@ namespace Lexer
 {
     public static class Lexer
     {
-        public static IEnumerable<Token> Tokenize(string inputExpression)
+        public static IEnumerable<Token> Tokenize(string expression)
         {
             int position = 0;
-            var expression = RegexFunctions.RemoveWhitespace(inputExpression);
 
             while (position <= expression.Length)
             {
@@ -17,7 +16,7 @@ namespace Lexer
 
                 yield return token;
 
-                if (token.Type is TokenType.Unknown or TokenType.EndOfFile)
+                if (token.Type is TokenType.EndOfFile)
                     yield break;
 
                 position += token.Lexeme!.Length;
