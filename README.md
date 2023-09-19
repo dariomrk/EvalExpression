@@ -32,7 +32,8 @@ var result = Core.Core.Evaluate("5+3*(4/2)-7");
 Console.WriteLine(result); // will output 4
 // ...
 ```
-
+- Using a debugger you can observe the different steps of evaluating this expression.
+- The parser should output an AST like this:
 ```mermaid
 flowchart TD
     %% Nodes
