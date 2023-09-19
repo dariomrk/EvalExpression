@@ -104,7 +104,7 @@ namespace Unit
 
             var parser = new Parser.Parser(input);
 
-            Assert.Throws<SyntaxException>(parser.Parse);
+            _ = Assert.Throws<SyntaxException>(parser.Parse);
         }
 
         [Fact]

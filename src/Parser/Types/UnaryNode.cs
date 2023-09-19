@@ -1,5 +1,4 @@
-﻿using Lexer.Enums;
-using Parser.Enums;
+﻿using Parser.Enums;
 
 namespace Parser.Types
 {

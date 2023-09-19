@@ -19,13 +19,10 @@ namespace Parser
                 .Select(token => new Token?(token))
                 .GetEnumerator();
 
-            _tokens.MoveNext();
+            _ = _tokens.MoveNext();
         }
 
-        public Node Parse()
-        {
-            return Expression();
-        }
+        public Node Parse() => Expression();
 
         private Token ConsumeToken(TokenType expected)
         {
@@ -37,15 +34,15 @@ namespace Parser
             if (token!.Value.Type != expected)
                 ThrowHelper.UnexpectedToken(token?.Lexeme, expected);
 
-            _tokens.MoveNext();
+            _ = _tokens.MoveNext();
             return token!.Value;
         }
 
         private Node ParenthesizedExpression()
         {
-            ConsumeToken(TokenType.OpenParenthesis);
+            _ = ConsumeToken(TokenType.OpenParenthesis);
             var expression = Expression();
-            ConsumeToken(TokenType.CloseParenthesis);
+            _ = ConsumeToken(TokenType.CloseParenthesis);
 
             return expression;
         }
@@ -79,9 +76,7 @@ namespace Parser
             return NodeFactory.NumericLiteral(token.Lexeme!);
         }
 
-        private Node Expression()
-        {
-            return BinaryExpressionBuilder(
+        private Node Expression() => BinaryExpressionBuilder(
                 Term,
                 Term,
                 new HashSet<TokenType>
@@ -89,11 +84,8 @@ namespace Parser
                     TokenType.Plus,
                     TokenType.Hyphen,
                 });
-        }
 
-        private Node Term()
-        {
-            return BinaryExpressionBuilder(
+        private Node Term() => BinaryExpressionBuilder(
                 Factor,
                 Factor,
                 new HashSet<TokenType>
@@ -101,18 +93,14 @@ namespace Parser
                     TokenType.Asterisk,
                     TokenType.Slash
                 });
-        }
 
-        private Node Factor()
-        {
-            return BinaryExpressionBuilder(
+        private Node Factor() => BinaryExpressionBuilder(
                 Primary,
                 Factor,
                 new HashSet<TokenType>
                 {
                     TokenType.Caret
                 });
-        }
 
         private Node BinaryExpressionBuilder(Func<Node> evaluatesLeft, Func<Node> evaluatesRight, HashSet<TokenType> tokenTypes)
         {

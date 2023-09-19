@@ -56,7 +56,7 @@ namespace Unit
         }
 
         [Fact]
-        public void MultipleWhitespaceOccurences()
+        public void MultipleWhitespaceOccurrences()
         {
             var expected = new List<Token>
             {
