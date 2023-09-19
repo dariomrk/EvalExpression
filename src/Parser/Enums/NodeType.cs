@@ -2,7 +2,6 @@
 {
     public enum NodeType
     {
-        Error,
         NumericLiteral,
         Positive,
         Negative,
