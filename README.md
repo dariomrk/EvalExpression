@@ -17,7 +17,7 @@ An arithmetic expression evaluator built using .NET
 
 - Clone this repo `git clone https://github.com/dariomrk/eval-expression.git`
 - The source (`/src`) is comprised of four projects:
-  - `Lexer`: converts the string expression representation into tokens
+  - `Lexer`: converts the string expression into tokens
   - `Parser`: builds an abstract syntax tree
   - `Interpreter`: evaluates the tree
   - `Core`: wraps the evaluation pipeline with the `Evaluate(...)` method
@@ -32,7 +32,7 @@ var result = Core.Core.Evaluate("5+3*(4/2)-7");
 Console.WriteLine(result); // will output 4
 // ...
 ```
-- Using a debugger you can observe the different steps of evaluating this expression.
+- Using a debugger you can observe the different steps of evaluating this expression
 - The parser should output an AST like this:
 ```mermaid
 flowchart TD
