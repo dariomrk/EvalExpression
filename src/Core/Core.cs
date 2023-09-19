@@ -10,7 +10,7 @@ namespace Core
         {
             var tokens = Lexer.Lexer
                 .Tokenize(expression)
-                .Where(token => token.Type is not TokenType.Whitespace && ignoreWhitespace);
+                .Where(token => token.Type is not TokenType.Whitespace || !ignoreWhitespace);
 
             var parser = new Parser.Parser(tokens);
 
