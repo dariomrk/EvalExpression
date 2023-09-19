@@ -1,19 +1,25 @@
 ﻿using Lexer.Enums;
+using Parser.Enums;
 
 namespace Parser.Extensions
 {
     internal static class TokenTypeExtensions
     {
-        internal static byte GetPrecedence(this TokenType tokenType) => tokenType switch
+        internal static NodeType ToBinaryNodeType(this TokenType type) => type switch
         {
-            TokenType.Plus => 1,
-            TokenType.Hyphen => 1,
-            TokenType.Asterisk => 2,
-            TokenType.Slash => 2,
-            TokenType.Caret => 3,
-            TokenType.OpenParenthesis => 4,
-            TokenType.CloseParenthesis => 4,
-            _ => throw new ArgumentException($"Cannot provide precedence for {nameof(TokenType)}.{tokenType}."),
+            TokenType.Plus => NodeType.Add,
+            TokenType.Hyphen => NodeType.Subtract,
+            TokenType.Asterisk => NodeType.Multiply,
+            TokenType.Slash => NodeType.Divide,
+            TokenType.Caret => NodeType.Exponentiate,
+            _ => throw new ArgumentException($"Cannot provide a binary {nameof(NodeType)} for {nameof(TokenType)}.{type}."),
+        };
+
+        internal static NodeType ToUnaryNodeType(this TokenType type) => type switch
+        {
+            TokenType.Plus => NodeType.Positive,
+            TokenType.Hyphen => NodeType.Negative,
+            _ => throw new ArgumentException($"Cannot provide a unary {nameof(NodeType)} for {nameof(TokenType)}.{type}."),
         };
     }
 }
