@@ -77,30 +77,30 @@ namespace Parser
         }
 
         private Node Expression() => BinaryExpressionBuilder(
-                Term,
-                Term,
-                new HashSet<TokenType>
-                {
-                    TokenType.Plus,
-                    TokenType.Hyphen,
-                });
+            Term,
+            Term,
+            new HashSet<TokenType>
+            {
+                TokenType.Plus,
+                TokenType.Hyphen,
+            });
 
         private Node Term() => BinaryExpressionBuilder(
-                Factor,
-                Factor,
-                new HashSet<TokenType>
-                {
-                    TokenType.Asterisk,
-                    TokenType.Slash
-                });
+            Factor,
+            Factor,
+            new HashSet<TokenType>
+            {
+                TokenType.Asterisk,
+                TokenType.Slash
+            });
 
         private Node Factor() => BinaryExpressionBuilder(
-                Primary,
-                Factor,
-                new HashSet<TokenType>
-                {
-                    TokenType.Caret
-                });
+            Primary,
+            Factor,
+            new HashSet<TokenType>
+            {
+                TokenType.Caret
+            });
 
         private Node BinaryExpressionBuilder(Func<Node> evaluatesLeft, Func<Node> evaluatesRight, HashSet<TokenType> tokenTypes)
         {
