@@ -8,12 +8,12 @@
 
 An arithmetic expression evaluator built using .NET
 
-## Prerequisites
+## Prerequisites:
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 - [Visual Studio](https://visualstudio.microsoft.com/vs/community/) or other IDE
 
-## Getting started
+## Getting started:
 
 - Clone this repo `git clone https://github.com/dariomrk/eval-expression.git`
 - The source (`/src`) is comprised of four projects:
@@ -24,7 +24,7 @@ An arithmetic expression evaluator built using .NET
 - The code is tested with unit & integration tests (`/test`)
   - Run them with `dotnet test` or using the integrated test explorer of your IDE
 
-## Usage sample
+## Usage sample:
 
 ```csharp
 // ...
@@ -68,3 +68,13 @@ flowchart TD
     style divide_left fill:royalblue
     style divide_right fill:royalblue
 ```
+
+## Supports:
+- Decimal numbers
+  - `1.23`
+- Addition, Subtraction, Multiplication, Division, Exponentiation
+  - `+`, `-`, `*`, `/`, `^`
+- Explicit negative numbers
+  - `-(2)`
+- Parenthesized expressions
+  - `2*(1+3)`
