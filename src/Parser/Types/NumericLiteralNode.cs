@@ -6,5 +6,9 @@ namespace Parser.Types
     {
         public override NodeType NodeType => NodeType.NumericLiteral;
         public decimal Value { get; init; }
+        public NumericLiteralNode(decimal value)
+        {
+            Value = value;
+        }
     }
 }
