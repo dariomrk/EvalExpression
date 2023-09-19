@@ -16,7 +16,7 @@ namespace Parser
         public Parser(IEnumerable<Token> tokens)
         {
             _tokens = tokens
-                .Select(token => new Token?(token))
+                .Select(static token => new Token?(token))
                 .GetEnumerator();
 
             _ = _tokens.MoveNext();
