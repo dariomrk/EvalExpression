@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
 		.github\workflows\build-and-test.yaml = .github\workflows\build-and-test.yaml
+		LICENSE = LICENSE
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{00652D29-ADD3-4B44-A224-4C425B27F46D}"
@@ -22,9 +24,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unit", "test\Unit\Unit.cspr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Parser", "src\Parser\Parser.csproj", "{55735335-815B-49E1-809C-2F5D1C878E04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interpreter", "src\Interpreter\Interpreter.csproj", "{F4A54E61-B6D6-46D3-932D-ED80D3FF38C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interpreter", "src\Interpreter\Interpreter.csproj", "{F4A54E61-B6D6-46D3-932D-ED80D3FF38C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Integration", "test\Integration\Integration.csproj", "{9082FA1D-ABA0-406D-9E6E-885326150FCC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Integration", "test\Integration\Integration.csproj", "{9082FA1D-ABA0-406D-9E6E-885326150FCC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
