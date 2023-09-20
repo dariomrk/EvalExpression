@@ -1,4 +1,6 @@
+using Core.Extensions;
 using Parser.Exceptions;
+using @core = Core.Core;
 
 namespace Integration
 {
@@ -11,7 +13,7 @@ namespace Integration
 
             var expected = 7m;
 
-            var actual = Core.Core.Evaluate(input);
+            var actual = core.Build(input).Evaluate();
 
             Assert.Equal(expected, actual);
         }
@@ -23,7 +25,7 @@ namespace Integration
 
             var expected = 11m;
 
-            var actual = Core.Core.Evaluate(input);
+            var actual = core.Build(input).Evaluate();
 
             Assert.Equal(expected, actual);
         }
@@ -35,7 +37,7 @@ namespace Integration
 
             var expected = -7m;
 
-            var actual = Core.Core.Evaluate(input);
+            var actual = core.Build(input).Evaluate();
 
             Assert.Equal(expected, actual);
         }
@@ -45,7 +47,7 @@ namespace Integration
         {
             var input = "-(1+2*3a32)";
 
-            _ = Assert.Throws<SyntaxException>(() => Core.Core.Evaluate(input));
+            Assert.Throws<SyntaxException>(() => core.Build(input).Evaluate());
         }
     }
 }
