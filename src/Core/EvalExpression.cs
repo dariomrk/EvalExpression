@@ -3,9 +3,9 @@ using Parser.Types;
 using @lexer = Lexer.Lexer;
 using @parser = Parser.Parser;
 
-namespace Core
+namespace EvalExpression
 {
-    public static class Core
+    public static class EvalExpression
     {
         public static Node Build(
             string expression,

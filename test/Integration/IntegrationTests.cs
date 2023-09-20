@@ -1,6 +1,6 @@
-using Core.Extensions;
+using EvalExpression.Extensions;
 using Parser.Exceptions;
-using @core = Core.Core;
+using @core = EvalExpression.EvalExpression;
 
 namespace Integration
 {

@@ -1,11 +1,11 @@
-﻿using Core.Dtos;
-using Core.Serialization;
+﻿using EvalExpression.Dtos;
+using EvalExpression.Serialization;
 using Parser.Types;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using @interpreter = Interpreter.Interpreter;
 
-namespace Core.Extensions
+namespace EvalExpression.Extensions
 {
     public static class NodeExtensions
     {

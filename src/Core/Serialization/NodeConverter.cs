@@ -2,7 +2,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Core.Serialization
+namespace EvalExpression.Serialization
 {
     internal class NodeConverter : JsonConverter<Node>
     {

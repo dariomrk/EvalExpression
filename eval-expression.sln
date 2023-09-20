@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8A936780-8AC4-4B96-9A87-D9AFD2A94034}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "src\Core\Core.csproj", "{5905E313-693E-46BB-A360-9EB3C4E19583}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvalExpression", "src\Core\EvalExpression.csproj", "{5905E313-693E-46BB-A360-9EB3C4E19583}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lexer", "src\Lexer\Lexer.csproj", "{B9A654E2-B7ED-4F34-9DED-839CA1E7F57D}"
 EndProject
