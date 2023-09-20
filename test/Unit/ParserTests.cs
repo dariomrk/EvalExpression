@@ -26,7 +26,6 @@ namespace Unit
                 new NumericLiteralNode(1.25m));
 
             var parser = new Parser.Parser(input);
-
             var actual = parser.Parse();
 
             Assert.Equal(expected, actual);
@@ -57,7 +56,6 @@ namespace Unit
                     new NumericLiteralNode(3)));
 
             var parser = new Parser.Parser(input);
-
             var actual = parser.Parse();
 
             Assert.Equal(expected, actual);
@@ -86,7 +84,6 @@ namespace Unit
                     new NumericLiteralNode(3)));
 
             var parser = new Parser.Parser(input);
-
             var actual = parser.Parse();
 
             Assert.Equal(expected, actual);
@@ -155,7 +152,27 @@ namespace Unit
                             new NumericLiteralNode(2)))));
 
             var parser = new Parser.Parser(input);
+            var actual = parser.Parse();
 
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void ImplicitNegativeNumber()
+        {
+            // expression: -2
+            var input = new List<Token>
+            {
+                new Token(TokenType.Hyphen, "-"),
+                new Token(TokenType.Number, "2"),
+                new Token(TokenType.EndOfFile, null),
+            }.AsEnumerable();
+
+            var expected = new UnaryNode(
+                NodeType.Negative,
+                new NumericLiteralNode(2));
+
+            var parser = new Parser.Parser(input);
             var actual = parser.Parse();
 
             Assert.Equal(expected, actual);
