@@ -1,0 +1,36 @@
+name: Feature request
+description: Suggest an idea for this project
+title: "[FEAT]: "
+labels: ["feature"]
+assignees:
+  - dariomrk
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before opening a feature request, please search to see if someone else has already suggested the same feature. 
+        Thank you for taking the time to suggest a new feature. To address this as efficiently as possible, we need some information.
+  - type: checkboxes
+    id: related-component
+    attributes:
+      label: Related component
+      description: Which component does this feature request pertain to?
+      options:
+        - label: Lexer
+        - label: Parser
+        - label: Interpreter
+        - label: EvalExpression
+    validations:
+      required: true
+  - type: textarea
+    id: desired-solution
+    attributes:
+      label: Describe the solution you'd like
+      description: A clear and concise description of what you want to happen.
+    validations:
+      required: true
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Add any other context here.
