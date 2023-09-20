@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Core\EvalExpression.csproj" />
+    <ProjectReference Include="..\..\src\EvalExpression\EvalExpression.csproj" />
   </ItemGroup>
 
 </Project>

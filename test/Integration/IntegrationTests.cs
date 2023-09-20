@@ -1,6 +1,6 @@
 using EvalExpression.Extensions;
 using Parser.Exceptions;
-using @core = EvalExpression.EvalExpression;
+using @eval = EvalExpression.EvalExpression;
 
 namespace Integration
 {
@@ -13,7 +13,7 @@ namespace Integration
 
             var expected = 7m;
 
-            var actual = core.Build(input).Evaluate();
+            var actual = @eval.Build(input).Evaluate();
 
             Assert.Equal(expected, actual);
         }
@@ -25,7 +25,7 @@ namespace Integration
 
             var expected = 11m;
 
-            var actual = core.Build(input).Evaluate();
+            var actual = @eval.Build(input).Evaluate();
 
             Assert.Equal(expected, actual);
         }
@@ -37,7 +37,7 @@ namespace Integration
 
             var expected = -7m;
 
-            var actual = core.Build(input).Evaluate();
+            var actual = @eval.Build(input).Evaluate();
 
             Assert.Equal(expected, actual);
         }
@@ -47,7 +47,7 @@ namespace Integration
         {
             var input = "-(1+2*3a32)";
 
-            Assert.Throws<SyntaxException>(() => core.Build(input).Evaluate());
+            Assert.Throws<SyntaxException>(() => @eval.Build(input).Evaluate());
         }
     }
 }
