@@ -20,7 +20,7 @@ An arithmetic expression evaluator built using .NET
   - `Lexer`: converts the string expression into tokens
   - `Parser`: builds an abstract syntax tree
   - `Interpreter`: evaluates the tree
-  - `Core`: wraps the evaluation pipeline with the `Evaluate(...)` method
+  - `EvalExpression`: provides an easy to use API
 - The code is tested with unit & integration tests (`/test`)
   - Run them with `dotnet test` or using the integrated test explorer of your IDE
 
