@@ -38,18 +38,18 @@ graph TD
   classDef binary fill:royalblue
   classDef numericLiteral fill:mediumseagreen
 
-  negative["`**UnaryNode**
-  Negative`"]
-  subtract["`**BinaryNode**
-  Subtract`"]
-  exponentiate["`**BinaryNode**
-  Exponentiate`"]
-  add["`**BinaryNode**
-  Add`"]
-  multiply["`**BinaryNode**
-  Multiply`"]
-  divide["`**BinaryNode**
-  Divide`"]
+  negative["UnaryNode
+  Negative"]
+  subtract["BinaryNode
+  Subtract"]
+  exponentiate["BinaryNode
+  Exponentiate"]
+  add["BinaryNode
+  Add"]
+  multiply["BinaryNode
+  Multiply"]
+  divide["BinaryNode
+  Divide"]
 
   subtract_left[1]
   add_left[2.5]
