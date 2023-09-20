@@ -1,24 +1,22 @@
 ﻿using Lexer.Enums;
+using Parser.Types;
+using @lexer = Lexer.Lexer;
+using @parser = Parser.Parser;
 
 namespace Core
 {
     public static class Core
     {
-        public static decimal Evaluate(
+        public static Node Build(
             string expression,
             bool ignoreWhitespace = true)
         {
-            var tokens = Lexer.Lexer
-                .Tokenize(expression)
+            var tokens = @lexer.Tokenize(expression)
                 .Where(token => token.Type is not TokenType.Whitespace || !ignoreWhitespace);
 
-            var parser = new Parser.Parser(tokens);
+            var parser = new @parser(tokens);
 
-            var abstractSyntaxTree = parser.Parse();
-
-            var result = Interpreter.Interpreter.Evaluate(abstractSyntaxTree);
-
-            return result;
+            return parser.Parse();
         }
     }
 }
