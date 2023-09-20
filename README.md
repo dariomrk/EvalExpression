@@ -27,51 +27,67 @@ An arithmetic expression evaluator built using .NET
 ## Usage sample:
 
 ```csharp
-// ...
-var result = Core.Core.Evaluate("5+3*(4/2)-7");
-Console.WriteLine(result); // will output 4
-// ...
+var result = Core.Core.Evaluate"-(1-(2.5+3*2)^(4/2))";
+Console.WriteLine(result); // will output 71.25
 ```
 - Using a debugger you can observe the different steps of evaluating this expression
 - The parser should output an AST like this:
 ```mermaid
-flowchart TD
-    %% Nodes
-    root[Subtract]
-    root_left[Add]
-    root_right((7))
-    add_left((5))
-    add_right[Multiply]
-    multiply_left((3))
-    multiply_right[Divide]
-    divide_left((4))
-    divide_right((2))
+graph TD
+  classDef unary fill:tomato
+  classDef binary fill:royalblue
+  classDef numericLiteral fill:mediumseagreen
 
-    %% Connections
-    root --> root_left
-    root --> root_right
-    root_left --> add_left
-    root_left --> add_right
-    add_right --> multiply_left
-    add_right --> multiply_right
-    multiply_right --> divide_left
-    multiply_right --> divide_right
+  negative["`**UnaryNode**
+  Negative`"]
+  subtract["`**BinaryNode**
+  Subtract`"]
+  exponentiate["`**BinaryNode**
+  Exponentiate`"]
+  add["`**BinaryNode**
+  Add`"]
+  multiply["`**BinaryNode**
+  Multiply`"]
+  divide["`**BinaryNode**
+  Divide`"]
 
-    %% Styling
-    style root fill:tomato
-    style root_left fill:tomato
-    style add_right fill:mediumseagreen
-    style multiply_right fill:mediumseagreen
-    style root_right fill:royalblue
-    style add_left fill:royalblue
-    style multiply_left fill:royalblue
-    style divide_left fill:royalblue
-    style divide_right fill:royalblue
+  subtract_left[1]
+  add_left[2.5]
+  multiply_left[3]
+  multiply_right[2]
+  divide_left[4]
+  divide_right[2]
+  
+  subgraph Root
+    negative:::unary -- Next --> subtract:::binary
+  end
+
+  subgraph Depth 1
+    subtract -- Left --> subtract_left:::numericLiteral
+    subtract -- Right --> exponentiate:::binary
+  end
+
+  subgraph Depth 2
+    exponentiate -- Left --> add:::binary
+    exponentiate -- Right --> divide:::binary
+  end
+
+  subgraph Depth 3
+    add -- Left --> add_left:::numericLiteral
+    add -- Right --> multiply:::binary
+    divide -- Left --> divide_left:::numericLiteral
+    divide -- Right --> divide_right:::numericLiteral
+  end
+
+  subgraph Depth 4
+    multiply -- Left --> multiply_left:::numericLiteral
+    multiply -- Right --> multiply_right:::numericLiteral
+  end
 ```
 
 ## Supports:
-- Decimal numbers
-  - `1.23`
+- Integers, decimal numbers
+  - `420`, `1.23`, etc.
 - Addition, Subtraction, Multiplication, Division, Exponentiation
   - `+`, `-`, `*`, `/`, `^`
 - Explicit negative numbers
