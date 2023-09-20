@@ -27,8 +27,17 @@ An arithmetic expression evaluator built using .NET
 ## Usage sample:
 
 ```csharp
-var result = Core.Core.Evaluate"-(1-(2.5+3*2)^(4/2))";
-Console.WriteLine(result); // will output 71.25
+using EvalExpression.Extensions;
+using @eval = EvalExpression.EvalExpression;
+
+var expression = "-(1-(2.5+3*2)^(4/2))";
+
+var result = eval
+    .Build(expression) // builds the AST
+    .Evaluate(); // evaluates the AST
+
+// Will output: Expression "-(1-(2.5+3*2)^(4/2))" resolves to: 71.25
+Console.WriteLine($"Expression \"{expression}\" resolves to: {result}");
 ```
 - Using a debugger you can observe the different steps of evaluating this expression
 - The parser should output an AST like this:
