@@ -19,7 +19,7 @@ namespace Parser
                 .Select(static token => new Token?(token))
                 .GetEnumerator();
 
-            _ = _tokens.MoveNext();
+            _tokens.MoveNext();
         }
 
         public Node Parse() => Expression();
@@ -34,15 +34,15 @@ namespace Parser
             if (token!.Value.Type != expected)
                 ThrowHelper.UnexpectedToken(token?.Lexeme, expected);
 
-            _ = _tokens.MoveNext();
+            _tokens.MoveNext();
             return token!.Value;
         }
 
         private Node ParenthesizedExpression()
         {
-            _ = ConsumeToken(TokenType.OpenParenthesis);
+            ConsumeToken(TokenType.OpenParenthesis);
             var expression = Expression();
-            _ = ConsumeToken(TokenType.CloseParenthesis);
+            ConsumeToken(TokenType.CloseParenthesis);
 
             return expression;
         }
