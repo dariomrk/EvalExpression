@@ -201,5 +201,28 @@ namespace Unit
 
             Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public void ExplicitNegativeNumber()
+        {
+            // expression: -(2)
+            var input = new List<Token>
+            {
+                new Token(TokenType.Hyphen, "-"),
+                new Token(TokenType.OpenParenthesis, "("),
+                new Token(TokenType.Number, "3"),
+                new Token(TokenType.CloseParenthesis, ")"),
+                new Token(TokenType.EndOfFile, null),
+            }.AsEnumerable();
+
+            var expected = new UnaryNode(
+                NodeType.Negative,
+                new NumericLiteralNode(3));
+
+            var parser = new Parser.Parser(input);
+            var actual = parser.Parse();
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
