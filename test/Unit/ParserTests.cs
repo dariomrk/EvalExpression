@@ -107,14 +107,12 @@ namespace Unit
         [Fact]
         public void ComplexExpression()
         {
-            // expression: -(3)^2*(2+3*(1+2))
-            // does not support -3 negative number notation as of 19.9.2023.
+            // expression: -3^2*(2+3*(1+2))
+
             var input = new List<Token>
             {
                 new Token(TokenType.Hyphen, "-"),
-                new Token(TokenType.OpenParenthesis, "("),
                 new Token(TokenType.Number, "3"),
-                new Token(TokenType.CloseParenthesis, ")"),
                 new Token(TokenType.Caret, "^"),
                 new Token(TokenType.Number, "2"),
                 new Token(TokenType.Asterisk, "*"),
@@ -134,12 +132,12 @@ namespace Unit
 
             var expected = new BinaryNode(
                 NodeType.Multiply,
-                new BinaryNode(
-                    NodeType.Exponentiate,
-                    new UnaryNode(
-                        NodeType.Negative,
-                        new NumericLiteralNode(3)),
-                    new NumericLiteralNode(2)),
+                new UnaryNode(
+                    NodeType.Negative,
+                    new BinaryNode(
+                        NodeType.Exponentiate,
+                        new NumericLiteralNode(3),
+                        new NumericLiteralNode(2))),
                 new BinaryNode(
                     NodeType.Add,
                     new NumericLiteralNode(2),
