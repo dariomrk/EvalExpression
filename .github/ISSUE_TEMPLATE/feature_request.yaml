@@ -10,16 +10,17 @@ body:
       value: |
         Before opening a feature request, please search to see if someone else has already suggested the same feature. 
         Thank you for taking the time to suggest a new feature. To address this as efficiently as possible, we need some information.
-  - type: checkboxes
+  - type: dropdown
     id: related-component
     attributes:
       label: Related component
       description: Which component does this feature request pertain to?
       options:
-        - label: Lexer
-        - label: Parser
-        - label: Interpreter
-        - label: EvalExpression
+        - Lexer
+        - Parser
+        - Interpreter
+        - EvalExpression
+        - Not applicable
     validations:
       required: true
   - type: textarea
