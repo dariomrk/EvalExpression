@@ -186,7 +186,7 @@ namespace Unit
             {
                 new Token(TokenType.Hyphen, "-"),
                 new Token(TokenType.Number, "2"),
-                new Token(TokenType.Number, "*"),
+                new Token(TokenType.Asterisk, "*"),
                 new Token(TokenType.Number, "3"),
                 new Token(TokenType.EndOfFile, null),
             }.AsEnumerable();
