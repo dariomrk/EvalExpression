@@ -52,7 +52,7 @@ namespace Parser
             var token = ConsumeToken(TokenType.Hyphen);
             return NodeFactory.Unary(
                 token.Type.ToUnaryNodeType(),
-                ParenthesizedExpression());
+                Factor());
         }
 
         private Node Primary()
