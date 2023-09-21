@@ -99,7 +99,7 @@ graph TD
   - `420`, `1.23`, etc.
 - Addition, Subtraction, Multiplication, Division, Exponentiation
   - `+`, `-`, `*`, `/`, `^`
-- Explicit negative numbers
-  - `-(2)`
+- Explicit & implicit negative numbers
+  - `-(2)`, `-2`
 - Parenthesized expressions
   - `2*(1+3)`
