@@ -177,5 +177,31 @@ namespace Unit
 
             Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public void NegativeNumberBeforeOperator()
+        {
+            // expression: -2*3
+            var input = new List<Token>
+            {
+                new Token(TokenType.Hyphen, "-"),
+                new Token(TokenType.Number, "2"),
+                new Token(TokenType.Number, "*"),
+                new Token(TokenType.Number, "3"),
+                new Token(TokenType.EndOfFile, null),
+            }.AsEnumerable();
+
+            var expected = new BinaryNode(
+                NodeType.Multiply,
+                new UnaryNode(
+                    NodeType.Negative,
+                    new NumericLiteralNode(2)),
+                new NumericLiteralNode(3));
+
+            var parser = new Parser.Parser(input);
+            var actual = parser.Parse();
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
