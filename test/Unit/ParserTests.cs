@@ -108,7 +108,6 @@ namespace Unit
         public void ComplexExpression()
         {
             // expression: -3^2*(2+3*(1+2))
-
             var input = new List<Token>
             {
                 new Token(TokenType.Hyphen, "-"),
