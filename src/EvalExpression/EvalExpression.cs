@@ -7,6 +7,13 @@ namespace EvalExpression
 {
     public static class EvalExpression
     {
+        /// <summary>
+        /// Builds an AST (Abstract Syntax Tree) from an arithmetic expression string.
+        /// </summary>
+        /// <param name="expression">Expression to parse</param>
+        /// <param name="ignoreWhitespace">Should ignore whitespace from the provided <paramref name="expression"/>?</param>
+        /// <returns>The root node of the parsed expression</returns>
+        /// <exception cref="Parser.Exceptions.SyntaxException"></exception>
         public static Node Build(
             string expression,
             bool ignoreWhitespace = true)

@@ -6,6 +6,11 @@ namespace Interpreter
 {
     public static class Interpreter
     {
+        /// <summary>
+        /// Evaluates the given AST.
+        /// </summary>
+        /// <param name="node">Node to be evaluated</param>
+        /// <returns>The result of the AST evaluation</returns>
         public static decimal Evaluate(Node node) => node.NodeType switch
         {
             NodeType.NumericLiteral => InterpreterFunctions.EvaluateNumericLiteral(node),

@@ -7,6 +7,10 @@ using Parser.Types;
 
 namespace Parser
 {
+    /// <summary>
+    /// Provides a way of converting tokens to an AST.<br/>
+    /// Implemented as an <a href="https://en.wikipedia.org/wiki/Recursive_descent_parser">recursive descent parser</a>.
+    /// </summary>
     public sealed class Parser
     {
         private readonly IEnumerator<Token?> _tokens;
@@ -14,6 +18,10 @@ namespace Parser
         private Token? CurrentToken => _tokens.Current;
         private TokenType CurrentTokenType => _tokens.Current!.Value.Type;
 
+        /// <summary>
+        /// Creates a new instance of the <see cref="Parser"/> class.
+        /// </summary>
+        /// <param name="tokens">Tokens to be parsed</param>
         public Parser(IEnumerable<Token> tokens)
         {
             _tokens = tokens
@@ -23,6 +31,11 @@ namespace Parser
             _tokens.MoveNext();
         }
 
+        /// <summary>
+        /// Parses the expression provided in the constructor.
+        /// </summary>
+        /// <returns>The root node of the AST</returns>
+        /// <exception cref="Exceptions.SyntaxException"></exception>
         public Node Parse()
         {
             var expression = Expression();
