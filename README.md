@@ -20,6 +20,8 @@ An arithmetic expression evaluator built using .NET
   - `2*(1+3)`
 - Implicit multiplication
   - `-2(3+1)`
+- Extendability
+  - `Parser` implemented as a [recursive descent parser](https://en.wikipedia.org/wiki/Recursive_descent_parser)
 
 ## Usage sample:
 
@@ -49,60 +51,6 @@ An arithmetic expression evaluator built using .NET
       .Build("-(1-(2.5+3*2)^(4/2))")
       .ToJsonString(); // serializes to JSON
   ```
-
-- AST for the `-(1-(2.5+3*2)^(4/2))` expression should be as follows:
-```mermaid
-graph TD
-  classDef unary fill:tomato
-  classDef binary fill:royalblue
-  classDef numericLiteral fill:mediumseagreen
-
-  negative["UnaryNode
-  Negative"]
-  subtract["BinaryNode
-  Subtract"]
-  exponentiate["BinaryNode
-  Exponentiate"]
-  add["BinaryNode
-  Add"]
-  multiply["BinaryNode
-  Multiply"]
-  divide["BinaryNode
-  Divide"]
-
-  subtract_left[1]
-  add_left[2.5]
-  multiply_left[3]
-  multiply_right[2]
-  divide_left[4]
-  divide_right[2]
-  
-  subgraph Root
-    negative:::unary -- Next --> subtract:::binary
-  end
-
-  subgraph Depth 1
-    subtract -- Left --> subtract_left:::numericLiteral
-    subtract -- Right --> exponentiate:::binary
-  end
-
-  subgraph Depth 2
-    exponentiate -- Left --> add:::binary
-    exponentiate -- Right --> divide:::binary
-  end
-
-  subgraph Depth 3
-    add -- Left --> add_left:::numericLiteral
-    add -- Right --> multiply:::binary
-    divide -- Left --> divide_left:::numericLiteral
-    divide -- Right --> divide_right:::numericLiteral
-  end
-
-  subgraph Depth 4
-    multiply -- Left --> multiply_left:::numericLiteral
-    multiply -- Right --> multiply_right:::numericLiteral
-  end
-```
 
 ## Prerequisites:
 

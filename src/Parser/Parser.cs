@@ -9,7 +9,7 @@ namespace Parser
 {
     /// <summary>
     /// Provides a way of converting tokens to an AST.<br/>
-    /// Implemented as an <a href="https://en.wikipedia.org/wiki/Recursive_descent_parser">recursive descent parser</a>.
+    /// Implemented as a <a href="https://en.wikipedia.org/wiki/Recursive_descent_parser">recursive descent parser</a>.
     /// </summary>
     public sealed class Parser
     {
