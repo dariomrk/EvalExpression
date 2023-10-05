@@ -223,5 +223,37 @@ namespace Unit
 
             Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public void ImplicitMultiplication()
+        {
+            // expression: -2(3+1)
+            var input = new List<Token>
+            {
+                new Token(TokenType.Hyphen, "-"),
+                new Token(TokenType.Number, "2"),
+                new Token(TokenType.OpenParenthesis, "("),
+                new Token(TokenType.Number, "3"),
+                new Token(TokenType.Plus, "+"),
+                new Token(TokenType.Number, "1"),
+                new Token(TokenType.CloseParenthesis, ")"),
+                new Token(TokenType.EndOfFile, null),
+            }.AsEnumerable();
+
+            var expected = new BinaryNode(
+                NodeType.Multiply,
+                new UnaryNode(
+                    NodeType.Negative,
+                    new NumericLiteralNode(2)),
+                new BinaryNode(
+                    NodeType.Add,
+                    new NumericLiteralNode(3),
+                    new NumericLiteralNode(1)));
+
+            var parser = new Parser.Parser(input);
+            var actual = parser.Parse();
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
