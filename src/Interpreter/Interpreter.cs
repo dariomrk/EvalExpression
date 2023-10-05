@@ -16,7 +16,7 @@ namespace Interpreter
             NodeType.Multiply => InterpreterFunctions.EvaluateMultiply(node),
             NodeType.Divide => InterpreterFunctions.EvaluateDivide(node),
             NodeType.Exponentiate => InterpreterFunctions.EvaluateExponentiate(node),
-            _ => ThrowHelper.UnknownNodeType(node),
+            _ => throw new ArgumentException($"Unknown {nameof(NodeType)} at {nameof(Node)}: {node}.")
         };
     }
 }

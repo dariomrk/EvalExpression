@@ -20,14 +20,14 @@ namespace Lexer.Types
             new()
             {
                 Lexeme = null,
-                Type = TokenType.EndOfFile
+                Type = TokenType.EndOfFile,
             };
 
         public static Token Unknown =>
             new()
             {
                 Lexeme = null,
-                Type = TokenType.Unknown
+                Type = TokenType.Unknown,
             };
     }
 }
