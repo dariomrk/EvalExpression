@@ -1,5 +1,6 @@
 ﻿using Lexer.Enums;
 using Lexer.Types;
+using Parser.Enums;
 using Parser.Extensions;
 using Parser.Functions;
 using Parser.Types;
@@ -46,6 +47,12 @@ namespace Parser
             return token!.Value;
         }
 
+        private Node Number()
+        {
+            var token = ConsumeToken(TokenType.Number);
+            return NodeFactory.NumericLiteral(token.Lexeme!);
+        }
+
         private Node ParenthesizedExpression()
         {
             ConsumeToken(TokenType.OpenParenthesis);
@@ -65,23 +72,43 @@ namespace Parser
 
         private Node Primary()
         {
+            if(CurrentToken is null)
+                ThrowHelper.UnexpectedEndOfExpression(
+                    new HashSet<TokenType>
+                    {
+                        TokenType.Number,
+                        TokenType.OpenParenthesis,
+                        TokenType.Hyphen
+                    });
+
+            Node node = null!;
+
+            if (CurrentTokenType is TokenType.Number)
+                node = Number();
+
+            else if (CurrentTokenType is TokenType.OpenParenthesis)
+                node = ParenthesizedExpression();
+
+            else if (CurrentTokenType is TokenType.Hyphen)
+                node = Unary();
+
             if (CurrentToken is null)
                 ThrowHelper.UnexpectedEndOfExpression(
                     new HashSet<TokenType>
                     {
-                        TokenType.OpenParenthesis,
-                        TokenType.Hyphen,
-                        TokenType.Number
+                        TokenType.Number,
+                        TokenType.OpenParenthesis
                     });
 
-            if (CurrentTokenType == TokenType.OpenParenthesis)
-                return ParenthesizedExpression();
+            while (CurrentTokenType is TokenType.Number or TokenType.OpenParenthesis)
+            {
+                node = NodeFactory.Binary(
+                    NodeType.Multiply,
+                    node,
+                    Primary());
+            }
 
-            if (CurrentTokenType == TokenType.Hyphen)
-                return Unary();
-
-            var token = ConsumeToken(TokenType.Number);
-            return NodeFactory.NumericLiteral(token.Lexeme!);
+            return node;
         }
 
         private Node Expression() => BinaryExpressionBuilder(
