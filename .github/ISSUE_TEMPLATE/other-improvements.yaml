@@ -1,0 +1,36 @@
+name: Feature request
+description: Suggest an idea for this project
+title: "[OTHER]: "
+labels: ["other"]
+assignees:
+  - dariomrk
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before opening the issue, please search to see if someone else has already suggested the same improvement. 
+        Thank you for taking the time to suggest an improvement. To address this as efficiently as possible, we need some information.
+  - type: dropdown
+    id: issue-type
+    attributes:
+      label: Issue type
+      description: What is this issue related to?
+      options:
+        - Documentation
+        - CiCd pipeline
+        - Chores
+        - Not applicable
+    validations:
+      required: true
+  - type: textarea
+    id: desired-solution
+    attributes:
+      label: Describe the solution you'd like
+      description: A clear and concise description of what you want to happen.
+    validations:
+      required: true
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Add any other context here.
