@@ -1,4 +1,4 @@
-# eval-expression
+# EvalExpression
 
 ![Top language](https://img.shields.io/github/languages/top/dariomrk/eval-expression)
 ![Build & test workflow](https://img.shields.io/github/actions/workflow/status/dariomrk/eval-expression/build-and-test.yaml)
