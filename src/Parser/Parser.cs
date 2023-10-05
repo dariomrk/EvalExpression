@@ -78,7 +78,7 @@ namespace Parser
                     {
                         TokenType.Number,
                         TokenType.OpenParenthesis,
-                        TokenType.Hyphen
+                        TokenType.Hyphen,
                     });
 
             Node node = null!;
@@ -97,7 +97,7 @@ namespace Parser
                     new HashSet<TokenType>
                     {
                         TokenType.Number,
-                        TokenType.OpenParenthesis
+                        TokenType.OpenParenthesis,
                     });
 
             while (CurrentTokenType is TokenType.Number or TokenType.OpenParenthesis)
@@ -126,7 +126,7 @@ namespace Parser
             new HashSet<TokenType>
             {
                 TokenType.Asterisk,
-                TokenType.Slash
+                TokenType.Slash,
             });
 
         private Node Factor() => BinaryExpressionBuilder(
@@ -134,7 +134,7 @@ namespace Parser
             Factor,
             new HashSet<TokenType>
             {
-                TokenType.Caret
+                TokenType.Caret,
             });
 
         private Node BinaryExpressionBuilder(

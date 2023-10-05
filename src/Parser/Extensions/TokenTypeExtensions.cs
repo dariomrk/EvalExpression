@@ -12,14 +12,14 @@ namespace Parser.Extensions
             TokenType.Asterisk => NodeType.Multiply,
             TokenType.Slash => NodeType.Divide,
             TokenType.Caret => NodeType.Exponentiate,
-            _ => throw new ArgumentException($"Cannot provide a binary {nameof(NodeType)} for {nameof(TokenType)}.{type}."),
+            _ => throw new ArgumentException($"Cannot provide a binary {nameof(NodeType)} for {nameof(TokenType)}.{type}.")
         };
 
         internal static NodeType ToUnaryNodeType(this TokenType type) => type switch
         {
             TokenType.Plus => NodeType.Positive,
             TokenType.Hyphen => NodeType.Negative,
-            _ => throw new ArgumentException($"Cannot provide a unary {nameof(NodeType)} for {nameof(TokenType)}.{type}."),
+            _ => throw new ArgumentException($"Cannot provide a unary {nameof(NodeType)} for {nameof(TokenType)}.{type}.")
         };
     }
 }

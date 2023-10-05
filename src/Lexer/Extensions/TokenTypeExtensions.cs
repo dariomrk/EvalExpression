@@ -17,7 +17,7 @@ namespace Lexer.Extensions
             TokenType.Caret => RegexFunctions.MatchCaretAtStart(),
             TokenType.OpenParenthesis => RegexFunctions.MatchOpenParenthesisAtStart(),
             TokenType.CloseParenthesis => RegexFunctions.MatchCloseParenthesisAtStart(),
-            _ => throw new ArgumentException($"Cannot provide a {nameof(Regex)} for {nameof(TokenType)}.{type}."),
+            _ => throw new ArgumentException($"Cannot provide a {nameof(Regex)} for {nameof(TokenType)}.{type}.")
         };
     }
 }
