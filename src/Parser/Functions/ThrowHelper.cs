@@ -1,8 +1,10 @@
 ﻿using Lexer.Enums;
 using Parser.Exceptions;
+using System.Diagnostics;
 
 namespace Parser.Functions
 {
+    [StackTraceHidden]
     internal static class ThrowHelper
     {
         internal static void UnexpectedEndOfExpression(TokenType expected) =>
