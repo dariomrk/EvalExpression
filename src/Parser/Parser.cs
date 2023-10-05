@@ -22,7 +22,15 @@ namespace Parser
             _tokens.MoveNext();
         }
 
-        public Node Parse() => Expression();
+        public Node Parse()
+        {
+            var expression = Expression();
+
+            if(_tokens.MoveNext())
+                ThrowHelper.ExpectedEndOfFile(CurrentToken!.Value.Lexeme);
+
+            return expression;
+        }
 
         private Token ConsumeToken(TokenType expected)
         {
@@ -102,11 +110,14 @@ namespace Parser
                 TokenType.Caret
             });
 
-        private Node BinaryExpressionBuilder(Func<Node> evaluatesLeft, Func<Node> evaluatesRight, HashSet<TokenType> tokenTypes)
+        private Node BinaryExpressionBuilder(
+            Func<Node> evaluatesLeft,
+            Func<Node> evaluatesRight,
+            HashSet<TokenType> expectedTokenTypes)
         {
             var left = evaluatesLeft();
 
-            while (CurrentToken is not null && tokenTypes.Contains(CurrentTokenType))
+            while (CurrentToken is not null && expectedTokenTypes.Contains(CurrentTokenType))
             {
                 var @operator = ConsumeToken(CurrentTokenType);
                 var right = evaluatesRight();
