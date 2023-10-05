@@ -240,15 +240,15 @@ namespace Unit
                 new Token(TokenType.EndOfFile, null),
             }.AsEnumerable();
 
-            var expected = new BinaryNode(
-                NodeType.Multiply,
-                new UnaryNode(
-                    NodeType.Negative,
-                    new NumericLiteralNode(2)),
+            var expected = new UnaryNode(
+                NodeType.Negative,
                 new BinaryNode(
-                    NodeType.Add,
-                    new NumericLiteralNode(3),
-                    new NumericLiteralNode(1)));
+                    NodeType.Multiply,
+                    new NumericLiteralNode(2),
+                    new BinaryNode(
+                        NodeType.Add,
+                        new NumericLiteralNode(3),
+                        new NumericLiteralNode(1))));
 
             var parser = new Parser.Parser(input);
             var actual = parser.Parse();
