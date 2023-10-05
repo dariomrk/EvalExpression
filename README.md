@@ -8,39 +8,49 @@
 
 An arithmetic expression evaluator built using .NET
 
-## Prerequisites:
+## Supports:
 
-- [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
-- [Visual Studio](https://visualstudio.microsoft.com/vs/community/) or other IDE
-
-## Getting started:
-
-- Clone this repo `git clone https://github.com/dariomrk/eval-expression.git`
-- The source (`/src`) is comprised of four projects:
-  - `Lexer`: converts the string expression into tokens
-  - `Parser`: builds an abstract syntax tree
-  - `Interpreter`: evaluates the tree
-  - `EvalExpression`: provides an easy to use API
-- The code is tested with unit & integration tests (`/test`)
-  - Run them with `dotnet test` or using the integrated test explorer of your IDE
+- Integers, decimal numbers
+  - `420`, `1.23`
+- Addition, Subtraction, Multiplication, Division, Exponentiation
+  - `+`, `-`, `*`, `/`, `^`
+- Negative numbers
+  - `-(2)`, `-2`
+- Parenthesized expressions
+  - `2*(1+3)`
+- Implicit multiplication
+  - `-2(3+1)`
 
 ## Usage sample:
 
-```csharp
-using EvalExpression.Extensions;
-using @eval = EvalExpression.EvalExpression;
+- **Calculate the result on an expression:**
 
-var expression = "-(1-(2.5+3*2)^(4/2))";
+  ```csharp
+  using EvalExpression.Extensions;
+  using @eval = EvalExpression.EvalExpression;
 
-var result = eval
-    .Build(expression) // builds the AST
-    .Evaluate(); // evaluates the AST
+  var expression = "-(1-(2.5+3*2)^(4/2))";
 
-// Will output: Expression "-(1-(2.5+3*2)^(4/2))" resolves to: 71.25
-Console.WriteLine($"Expression \"{expression}\" resolves to: {result}");
-```
-- Using a debugger you can observe the different steps of evaluating this expression
-- The parser should output an AST like this:
+  var result = @eval
+      .Build(expression) // builds the AST
+      .Evaluate(); // evaluates the AST
+
+  // Will output: Expression '-(1-(2.5+3*2)^(4/2))' resolves to: 71.25
+  Console.WriteLine($"Expression '{expression}' resolves to: {result}");
+  ```
+
+- **Convert the AST to JSON:**
+
+  ```csharp
+  using EvalExpression.Extensions;
+  using @eval = EvalExpression.EvalExpression;
+
+  var result = @eval
+      .Build("-(1-(2.5+3*2)^(4/2))")
+      .ToJsonString(); // serializes to JSON
+  ```
+
+- AST for the `-(1-(2.5+3*2)^(4/2))` expression should be as follows:
 ```mermaid
 graph TD
   classDef unary fill:tomato
@@ -94,12 +104,18 @@ graph TD
   end
 ```
 
-## Supports:
-- Integers, decimal numbers
-  - `420`, `1.23`, etc.
-- Addition, Subtraction, Multiplication, Division, Exponentiation
-  - `+`, `-`, `*`, `/`, `^`
-- Explicit & implicit negative numbers
-  - `-(2)`, `-2`
-- Parenthesized expressions
-  - `2*(1+3)`
+## Prerequisites:
+
+- [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+- [Visual Studio](https://visualstudio.microsoft.com/vs/community/) or other IDE
+
+## Getting started:
+
+- Clone this repo `git clone https://github.com/dariomrk/eval-expression.git`
+- The source (`/src`) is comprised of four projects:
+  - `Lexer`: converts the string expression into tokens
+  - `Parser`: builds an abstract syntax tree
+  - `Interpreter`: evaluates the tree
+  - `EvalExpression`: provides an easy to use API
+- The code is tested with unit & integration tests (`/test`)
+  - Run them with `dotnet test` or using the integrated test explorer of your IDE
